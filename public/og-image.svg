@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Jeremy MADAR — Portfolio">
+    <defs>
+        <linearGradient id="ogBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0F1F35"/>
+            <stop offset="1" stop-color="#0A1628"/>
+        </linearGradient>
+        <linearGradient id="ogAcc" x1="1" y1="0" x2="0.3" y2="1">
+            <stop offset="0" stop-color="#3B82F6" stop-opacity="0.25"/>
+            <stop offset="1" stop-color="#1E40AF" stop-opacity="0"/>
+        </linearGradient>
+        <pattern id="ogGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+            <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#3B82F6" stroke-width="0.5" stroke-opacity="0.10"/>
+        </pattern>
+        <style>
+            .h { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.02em; }
+            .p { font-family: 'Inter', system-ui, sans-serif; font-weight: 500; }
+            .s { font-family: 'Inter', system-ui, sans-serif; font-weight: 500; letter-spacing: 0.24em; }
+        </style>
+    </defs>
+
+    <rect width="1200" height="630" fill="url(#ogBg)"/>
+    <rect width="1200" height="630" fill="url(#ogGrid)"/>
+    <rect width="1200" height="630" fill="url(#ogAcc)"/>
+
+    <!-- Barre signature accent -->
+    <rect x="0" y="0" width="6" height="220" fill="#3B82F6"/>
+
+    <!-- Eyebrow -->
+    <text x="90" y="235" class="s" fill="#94A3B8" font-size="20">PORTFOLIO · PARIS</text>
+
+    <!-- Nom -->
+    <text x="90" y="350" class="h" fill="#F5F7FA" font-size="110">Jeremy MADAR</text>
+
+    <!-- Tagline sur deux lignes -->
+    <text x="90" y="420" class="p" fill="#94A3B8" font-size="32">Développeur Full-Stack</text>
+    <text x="90" y="462" class="p" fill="#94A3B8" font-size="32">Laravel · Symfony · React · Vue.js</text>
+
+    <!-- URL en bas -->
+    <text x="90" y="570" class="s" fill="#64748B" font-size="16">JEREMYMADAR-DEV.GITHUB.IO</text>
+</svg>

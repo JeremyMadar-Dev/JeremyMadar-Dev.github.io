@@ -1,0 +1,302 @@
+/* ==============================================================
+   Portfolio Jeremy MADAR — main.css
+   --------------------------------------------------------------
+   Ce fichier contient uniquement ce que Tailwind ne peut pas
+   faire proprement en CDN :
+     1. Tokens de thème (variables CSS, mode clair/sombre)
+     2. Base : reset minimal, typographie, sélection, focus
+     3. Utilitaires custom (skip link, scroll behavior)
+     4. Animations reveal + respect prefers-reduced-motion
+   ============================================================== */
+
+
+/* ==============================================================
+   1. TOKENS DE THÈME
+   Les valeurs sont pilotées par [data-theme] posé sur <html>
+   (voir script anti-flash dans index.html).
+   ============================================================== */
+
+:root,
+[data-theme="dark"] {
+    /* Fonds */
+    --bg:           #0A1628;
+    --bg-elevated:  #0F1F35;
+    --bg-subtle:    #152A44;
+
+    /* Textes */
+    --fg:           #F5F7FA;
+    --fg-muted:     #94A3B8;
+    --fg-subtle:    #64748B;
+
+    /* Accent
+       --accent        : identité du site (liens, chips, icônes)
+       --accent-hover  : hover TEXTE — plus clair pour signaler
+                          l'interaction sur fond sombre
+       --accent-strong : hover FOND de bouton avec texte blanc —
+                          plus foncé, garantit AA (>4.5:1) */
+    --accent:        #3B82F6;
+    --accent-hover:  #60A5FA;
+    --accent-strong: #2563EB;   /* contraste avec blanc = 6.4:1 ✓ */
+    --accent-pressed:#1E40AF;   /* état actif/pressed = 9.5:1 ✓ */
+
+    /* Structure */
+    --border:       #1E3A5F;
+
+    /* Focus ring : bleu accent avec halo (a11y RGAA) */
+    --focus-ring:   0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+[data-theme="light"] {
+    --bg:           #FBFCFD;
+    --bg-elevated:  #FFFFFF;
+    --bg-subtle:    #F1F5F9;
+
+    --fg:           #0A1628;
+    --fg-muted:     #475569;
+    --fg-subtle:    #64748B;
+
+    /* En mode clair, --accent est déjà foncé (blue-600) ;
+       les états s'assombrissent encore pour renforcer le contraste. */
+    --accent:        #2563EB;   /* sur blanc = 6.4:1 ✓ */
+    --accent-hover:  #1D4ED8;   /* hover texte = 8.6:1 ✓ */
+    --accent-strong: #1D4ED8;   /* hover fond bouton = 8.6:1 ✓ */
+    --accent-pressed:#1E40AF;   /* pressed = 9.5:1 ✓ */
+
+    --border:       #E2E8F0;
+
+    --focus-ring:   0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
+}
+
+
+/* ==============================================================
+   2. BASE
+   ============================================================== */
+
+/* Reset minimal — Tailwind Play CDN embarque déjà Preflight,
+   on ajoute seulement ce qui manque pour notre thème custom. */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* compense la nav sticky pour les ancres */
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Respecte prefers-reduced-motion : coupe le scroll fluide */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    /* Transition douce lors du basculement clair/sombre */
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Titres : Fraunces variable (opsz + wght) */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--fg);
+    /* Axe optique pour Fraunces : optimise le dessin selon la taille rendue */
+    font-variation-settings: "opsz" 48;
+}
+
+/* Corps de texte lisible */
+p {
+    color: var(--fg);
+    max-width: 65ch;
+}
+
+/* Liens : accent + underline offset propre */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 150ms ease;
+}
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* Sélection : accent semi-transparent, texte lisible */
+::selection {
+    background-color: color-mix(in srgb, var(--accent) 25%, transparent);
+    color: var(--fg);
+}
+
+/* Focus visible clavier — RGAA obligatoire.
+   On masque le focus souris (Tailwind Preflight le fait déjà),
+   mais on force un ring net sur focus-visible. */
+:focus {
+    outline: none;
+}
+:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    /* Pas de border-radius forcé : le box-shadow épouse celui
+       du composant (rounded-lg d'un bouton, rounded-md d'un chip…). */
+}
+
+
+/* ==============================================================
+   3. UTILITAIRES CUSTOM
+   ============================================================== */
+
+/* Skip link : masqué visuellement, visible au focus clavier.
+   Obligatoire RGAA — permet de sauter la nav. */
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.75rem 1rem;
+    background-color: var(--accent);
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 0 0 6px 0;
+    transform: translateY(-120%);
+    transition: transform 200ms ease;
+    z-index: 100;
+}
+.skip-link:focus-visible {
+    transform: translateY(0);
+    box-shadow: var(--focus-ring);
+}
+
+/* Bordure des cartes/sections — reprend le token thème */
+.divider {
+    border-color: var(--border);
+}
+
+/* Bouton primary — style consolidé.
+   Spécificité renforcée (a.btn-primary) pour battre la règle
+   globale `a { color: var(--accent) }` peu importe l'ordre de
+   chargement du Tailwind Play CDN. Contraste AA garanti sur
+   tous les états (>4.5:1). */
+.btn-primary,
+a.btn-primary,
+a.btn-primary:visited {
+    background-color: var(--accent);
+    color: #FFFFFF;
+}
+.btn-primary:hover,
+a.btn-primary:hover {
+    background-color: var(--accent-strong);
+    color: #FFFFFF;
+}
+.btn-primary:active,
+a.btn-primary:active {
+    background-color: var(--accent-pressed);
+    color: #FFFFFF;
+}
+.btn-primary:disabled,
+a.btn-primary[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+/* ==============================================================
+   4. ANIMATIONS
+   Cascade "reveal" au scroll : les éléments avec [data-reveal]
+   passent en état visible via IntersectionObserver (main.js).
+   ============================================================== */
+
+/* État initial : invisible + décalé */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+/* Fallback JS désactivé : la classe .no-js reste sur <html>
+   → tout est visible immédiatement, garantit l'accessibilité
+   et l'indexation par les crawlers sans JS. */
+html.no-js [data-reveal],
+html.no-js [data-reveal-child] {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* État révélé : le JS ajoute la classe .is-visible */
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Cascade : chaque enfant [data-reveal-child] a un delay incrémenté.
+   S'applique quand le parent devient visible. */
+[data-reveal-child] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+        opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal].is-visible [data-reveal-child]:nth-child(1) { transition-delay:   0ms; opacity: 1; transform: translateY(0); }
+[data-reveal].is-visible [data-reveal-child]:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: translateY(0); }
+[data-reveal].is-visible [data-reveal-child]:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: translateY(0); }
+[data-reveal].is-visible [data-reveal-child]:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
+[data-reveal].is-visible [data-reveal-child]:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+[data-reveal].is-visible [data-reveal-child]:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
+
+/* Pulse discret pour la pastille "Disponible" */
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.6; transform: scale(0.85); }
+}
+.pulse-dot {
+    animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+/* Indicateur scroll flottant dans la hero */
+@keyframes float-down {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50%      { transform: translateY(6px); opacity: 1; }
+}
+.float-down {
+    animation: float-down 2.4s ease-in-out infinite;
+}
+
+/* Accordéons natifs <details> — retire le marqueur triangulaire
+   et anime le chevron custom en rotation lors de l'ouverture. */
+summary {
+    cursor: pointer;
+    list-style: none;
+}
+summary::-webkit-details-marker {
+    display: none;
+}
+.details-chevron {
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+details[open] .details-chevron {
+    transform: rotate(180deg);
+}
+
+/* Respect strict de prefers-reduced-motion :
+   on désactive TOUTES les animations non essentielles. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+    [data-reveal],
+    [data-reveal-child] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

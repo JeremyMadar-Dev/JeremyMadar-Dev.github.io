@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- ============================================================
+         SEO — Balises principales
+         ============================================================ -->
+    <title>Jeremy MADAR · Développeur Full-Stack freelance à Paris</title>
+    <meta name="description" content="Jeremy MADAR, développeur Full-Stack freelance à Paris. 4 ans d'expérience en Laravel, Symfony, React et Vue.js pour grands comptes, scale-ups et PME.">
+    <meta name="author" content="Jeremy MADAR">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="language" content="French">
+    <link rel="canonical" href="https://JeremyMadar-Dev.github.io/">
+
+    <!-- Couleur de thème dynamique (barre du navigateur mobile) -->
+    <meta name="theme-color" content="#0A1628" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#FBFCFD" media="(prefers-color-scheme: light)">
+    <meta name="color-scheme" content="dark light">
+
+    <!-- ============================================================
+         OpenGraph — Partage réseaux sociaux
+         ============================================================ -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jeremy MADAR — Portfolio">
+    <meta property="og:title" content="Jeremy MADAR · Développeur Full-Stack freelance à Paris">
+    <meta property="og:description" content="Développeur Full-Stack freelance. Laravel · Symfony · React · Vue.js. Missions pour grands comptes, scale-ups et PME.">
+    <meta property="og:url" content="https://JeremyMadar-Dev.github.io/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://JeremyMadar-Dev.github.io/public/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Jeremy MADAR — Portfolio développeur Full-Stack">
+
+    <!-- ============================================================
+         Twitter Card
+         ============================================================ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jeremy MADAR · Développeur Full-Stack freelance">
+    <meta name="twitter:description" content="Laravel · Symfony · React · Vue.js. Missions freelance pour grands comptes, scale-ups et PME.">
+    <meta name="twitter:image" content="https://JeremyMadar-Dev.github.io/public/og-image.png">
+    <meta name="twitter:image:alt" content="Jeremy MADAR — Portfolio développeur Full-Stack">
+
+    <!-- ============================================================
+         Favicon
+         ============================================================ -->
+    <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="public/favicon.ico">
+    <link rel="apple-touch-icon" href="public/apple-touch-icon.png">
+
+    <!-- ============================================================
+         Polices Google Fonts — Fraunces (titres) + Inter (corps)
+         Preconnect obligatoire pour la performance
+         ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap">
+
+    <!-- ============================================================
+         Tailwind CSS — via Play CDN (aucun build requis)
+         La configuration surcharge la palette avec nos tokens CSS.
+         ============================================================ -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuration Tailwind : on relie les classes au thème CSS variables.
+        // Ainsi bg-brand, text-fg, etc. suivent automatiquement le mode clair/sombre.
+        tailwind.config = {
+            darkMode: ['class', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    colors: {
+                        bg:              'var(--bg)',
+                        'bg-elev':       'var(--bg-elevated)',
+                        'bg-subtle':     'var(--bg-subtle)',
+                        fg:              'var(--fg)',
+                        'fg-muted':      'var(--fg-muted)',
+                        'fg-subtle':     'var(--fg-subtle)',
+                        accent:          'var(--accent)',
+                        'accent-hov':    'var(--accent-hover)',    /* hover TEXTE */
+                        'accent-strong': 'var(--accent-strong)',    /* hover FOND bouton */
+                        'accent-pressed':'var(--accent-pressed)',   /* état actif bouton */
+                        border:          'var(--border)'
+                    },
+                    fontFamily: {
+                        serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+                        sans:  ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    },
+                    maxWidth: {
+                        content: '72rem'
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Styles personnalisés (variables, animations, overrides) -->
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- ============================================================
+         Script anti-flash — applique le thème AVANT le rendu
+         et retire la classe no-js.
+         Doit rester inline et bloquant.
+         ============================================================ -->
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = stored || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                // localStorage indisponible : on reste sur le thème par défaut du HTML
+            }
+            // Retire no-js dès que le JS s'exécute.
+            // Si JS désactivé, la classe reste et le CSS force la visibilité.
+            document.documentElement.classList.remove('no-js');
+        })();
+    </script>
+
+    <!-- ============================================================
+         Schema.org — Person + WebSite (JSON-LD)
+         Aide le SEO et Google Knowledge Graph.
+         ============================================================ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://JeremyMadar-Dev.github.io/#person",
+                "name": "Jeremy MADAR",
+                "jobTitle": "Développeur Full-Stack freelance",
+                "description": "Développeur Full-Stack freelance à Paris, 4 ans d'expérience en Laravel, Symfony, React et Vue.js.",
+                "url": "https://JeremyMadar-Dev.github.io/",
+                "email": "mailto:madarjeremy1@gmail.com",
+                "image": "https://JeremyMadar-Dev.github.io/assets/images/portrait-placeholder.svg",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Paris",
+                    "addressCountry": "FR"
+                },
+                "alumniOf": {
+                    "@type": "CollegeOrUniversity",
+                    "name": "Epitech",
+                    "sameAs": "https://www.epitech.eu/"
+                },
+                "knowsAbout": [
+                    "Laravel", "Symfony", "PHP", "React", "Vue.js", "Next.js",
+                    "TypeScript", "Node.js", ".NET C#", "React Native",
+                    "PostgreSQL", "MySQL", "MongoDB", "Redis", "Elasticsearch",
+                    "Docker", "GitLab CI/CD", "Sécurité web", "RGAA", "API REST", "GraphQL"
+                ],
+                "sameAs": [
+                    "https://www.malt.fr/profile/jeremymd",
+                    "https://www.linkedin.com/in/jeremy-madar/",
+                    "https://github.com/JeremyMadar-Dev"
+                ]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://JeremyMadar-Dev.github.io/#website",
+                "url": "https://JeremyMadar-Dev.github.io/",
+                "name": "Jeremy MADAR — Portfolio",
+                "description": "Portfolio professionnel de Jeremy MADAR, développeur Full-Stack freelance à Paris.",
+                "inLanguage": "fr-FR",
+                "author": { "@id": "https://JeremyMadar-Dev.github.io/#person" },
+                "publisher": { "@id": "https://JeremyMadar-Dev.github.io/#person" }
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body class="bg-bg text-fg font-sans antialiased selection:bg-accent/25 selection:text-fg">
+
+    <!-- ============================================================
+         Lien d'évitement (skip link) — obligatoire RGAA
+         Visible uniquement au focus clavier.
+         ============================================================ -->
+    <a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+    <!-- ============================================================
+         En-tête site — nav sticky avec logo + socials + toggle thème
+         Landmark <header role="banner">.
+         ============================================================ -->
+    <header role="banner" class="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-bg/70 border-b border-border/60">
+        <nav aria-label="Navigation principale" class="max-w-content mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+
+            <!-- Monogramme JM cliquable = retour haut -->
+            <a href="#accueil" class="font-serif text-xl font-medium text-fg hover:text-accent transition-colors" aria-label="Retour à l'accueil">
+                JM<span class="text-accent" aria-hidden="true">·</span>
+            </a>
+
+            <!-- Icônes sociales + toggle thème -->
+            <ul class="flex items-center gap-1" role="list">
+
+                <!-- LinkedIn -->
+                <li>
+                    <a href="https://www.linkedin.com/in/jeremy-madar/"
+                       aria-label="Profil LinkedIn de Jeremy MADAR (nouvelle fenêtre)"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                       class="flex items-center justify-center w-11 h-11 rounded-md text-fg-muted hover:text-accent transition-colors">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </li>
+
+                <!-- GitHub -->
+                <li>
+                    <a href="https://github.com/JeremyMadar-Dev"
+                       aria-label="Profil GitHub de Jeremy MADAR (nouvelle fenêtre)"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                       class="flex items-center justify-center w-11 h-11 rounded-md text-fg-muted hover:text-accent transition-colors">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                        </svg>
+                    </a>
+                </li>
+
+                <!-- Malt -->
+                <li>
+                    <a href="https://www.malt.fr/profile/jeremymd"
+                       aria-label="Profil Malt de Jeremy MADAR (nouvelle fenêtre)"
+                       rel="noopener noreferrer"
+                       target="_blank"
+                       class="flex items-center justify-center w-11 h-11 rounded-md text-fg-muted hover:text-accent transition-colors">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                            <path d="M17.484 13.65a5.485 5.485 0 0 0 5.185-1.399 5.478 5.478 0 0 0 0-7.745 5.478 5.478 0 0 0-7.744 0l-1.4 1.399zm-1.398 1.398l-7.036 7.037a5.478 5.478 0 0 1-7.745 0 5.478 5.478 0 0 1 0-7.746l7.037-7.036c-2.14 2.139-2.14 5.606 0 7.745 2.14 2.139 5.606 2.139 7.744 0zm-4.586-4.586a2.85 2.85 0 1 1 0-5.702 2.851 2.851 0 0 1 0 5.702zm2.148 6.973a2.851 2.851 0 1 1 0 5.702 2.85 2.85 0 0 1 0-5.702zM7.037 22.601a2.85 2.85 0 1 1 0-5.702 2.85 2.85 0 0 1 0 5.702z"/>
+                        </svg>
+                    </a>
+                </li>
+
+                <!-- Séparateur vertical -->
+                <li class="w-px h-6 bg-border mx-2" aria-hidden="true"></li>
+
+                <!-- Toggle thème -->
+                <li>
+                    <button id="theme-toggle"
+                            type="button"
+                            aria-label="Basculer entre le mode clair et sombre"
+                            class="flex items-center justify-center w-11 h-11 rounded-md text-fg-muted hover:text-accent transition-colors">
+                        <!-- Soleil : visible en mode sombre (proposition = passer au clair) -->
+                        <svg class="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                        </svg>
+                        <!-- Lune : visible en mode clair (proposition = passer au sombre) -->
+                        <svg class="w-5 h-5 block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ============================================================
+         Contenu principal — landmark <main>
+         Chaque section future s'insère ici sous forme de <section>.
+         ============================================================ -->
+    <main id="contenu">
+
+        <!-- ========================================================
+             SECTION 1 · Hero
+             Pill disponibilité, H1 nom, tagline, sous-titre,
+             localisation, 3 CTA, indicateur scroll.
+             ======================================================== -->
+        <section id="accueil" aria-label="Présentation" class="relative min-h-screen flex items-center pt-28 pb-20 px-6 sm:px-8">
+            <div class="max-w-content mx-auto w-full" data-reveal>
+
+                <!-- Pastille de disponibilité — point vert animé -->
+                <div data-reveal-child class="inline-flex items-center gap-2 px-3 py-1.5 mb-8 rounded-full bg-bg-subtle border border-border text-xs sm:text-sm font-medium text-fg-muted">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot" aria-hidden="true"></span>
+                    <span>Disponible pour missions</span>
+                </div>
+
+                <!-- H1 nom — Fraunces variable, taille fluide -->
+                <h1 data-reveal-child class="font-serif font-semibold tracking-tight text-fg mb-6 text-[clamp(2.75rem,8vw,6rem)] leading-[1.05]">
+                    Jeremy MADAR
+                </h1>
+
+                <!-- Tagline stack -->
+                <p data-reveal-child class="text-lg sm:text-xl lg:text-2xl text-fg-muted font-medium mb-5 max-w-3xl">
+                    Développeur Full-Stack&nbsp;·&nbsp;Laravel&nbsp;·&nbsp;Symfony&nbsp;·&nbsp;React&nbsp;·&nbsp;Vue.js
+                </p>
+
+                <!-- Sous-titre proposition de valeur -->
+                <p data-reveal-child class="text-base sm:text-lg text-fg leading-relaxed mb-6 max-w-2xl">
+                    Je conçois et développe des applications web métier pour grands comptes, scale-ups et PME.
+                </p>
+
+                <!-- Localisation -->
+                <p data-reveal-child class="inline-flex items-center gap-2 text-sm text-fg-muted mb-10">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Paris, France
+                </p>
+
+                <!-- CTA — 3 boutons : primary + 2 secondary -->
+                <div data-reveal-child class="flex flex-wrap items-center gap-3 sm:gap-4">
+
+                    <!-- Primary : ancre vers réalisations -->
+                    <a href="#realisations"
+                       class="btn-primary inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-lg font-semibold text-sm sm:text-base transition-all duration-200 ease-out shadow-sm hover:shadow-md active:scale-[0.98]">
+                        Voir mes réalisations
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14M13 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+
+                    <!-- Secondary : téléchargement CV PDF -->
+                    <a href="./assets/documents/Jeremy_MADAR_CV_2026.pdf"
+                       download="Jeremy_MADAR_CV_2026.pdf"
+                       class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-lg border border-border bg-bg-elev hover:bg-bg-subtle text-fg font-semibold text-sm sm:text-base transition-colors">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        Télécharger CV
+                    </a>
+
+                    <!-- Secondary : contact mailto préformaté -->
+                    <a href="mailto:madarjeremy1@gmail.com?subject=Contact%20depuis%20votre%20portfolio&body=Bonjour%20Jeremy%2C"
+                       class="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-lg border border-border bg-bg-elev hover:bg-bg-subtle text-fg font-semibold text-sm sm:text-base transition-colors">
+                        Me contacter
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Indicateur scroll — flèche flottante, ancre vers À propos -->
+            <a href="#a-propos"
+               class="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-fg-subtle hover:text-accent transition-colors"
+               aria-label="Descendre vers la section à propos">
+                <span class="text-[0.65rem] uppercase tracking-[0.2em]">Scroll</span>
+                <svg class="w-4 h-4 float-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </a>
+        </section>
+
+        <!-- ========================================================
+             SECTION 2 · À propos
+             Eyebrow · H2 statement · photo + bio · 4 stats.
+             ======================================================== -->
+        <section id="a-propos" aria-labelledby="a-propos-titre" class="py-24 lg:py-32 px-6 sm:px-8 border-t border-border/60">
+            <div class="max-w-content mx-auto" data-reveal>
+
+                <!-- Petit label eyebrow au-dessus du titre -->
+                <p data-reveal-child class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-fg-muted font-medium mb-6">
+                    <span class="w-6 h-px bg-accent" aria-hidden="true"></span>
+                    À propos
+                </p>
+
+                <!-- H2 statement — reprend les 3 piliers de la bio -->
+                <h2 id="a-propos-titre" data-reveal-child class="font-serif font-medium text-fg text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight mb-16 max-w-3xl">
+                    Sécurité.<span class="text-accent">·</span> Performance.<span class="text-accent">·</span> Accessibilité.
+                </h2>
+
+                <!-- Grille photo (col-span-5) + bio (col-span-7) -->
+                <div class="grid md:grid-cols-12 gap-10 lg:gap-16 mb-20 lg:mb-24">
+
+                    <!-- Photo : cadre premium 4/5, bordure subtile -->
+                    <div data-reveal-child class="md:col-span-5">
+                        <figure class="relative aspect-[4/5] w-full max-w-sm md:max-w-none rounded-xl overflow-hidden border border-border bg-bg-elev">
+                            <img src="assets/images/portrait-placeholder.svg"
+                                 alt="Portrait de Jeremy MADAR"
+                                 width="480" height="600"
+                                 loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover">
+                        </figure>
+                    </div>
+
+                    <!-- Bio — 3 paragraphes, phrases-clés emphasées -->
+                    <div data-reveal-child class="md:col-span-7 space-y-5 text-base sm:text-lg text-fg leading-relaxed">
+                        <p>
+                            Développeur Full-Stack avec <strong class="font-semibold">4 ans d'expérience</strong>,
+                            diplômé d'<strong class="font-semibold">Epitech</strong> (MSc-Pro Bac+5).
+                            Double expertise <strong class="font-semibold">Symfony/React</strong> et
+                            <strong class="font-semibold">Laravel/Vue.js</strong>.
+                        </p>
+                        <p>
+                            Mon parcours s'est construit autour de projets exigeants : médias à forte audience,
+                            secteur financier d'un grand groupe automobile, cybersécurité.
+                        </p>
+                        <p>
+                            J'interviens du cadrage technique à la mise en production, avec une attention
+                            particulière portée à la sécurité, à la performance et à l'accessibilité.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bloc statistiques — 4 KPI, alignés sur une même baseline
+                     via un conteneur nombre à hauteur fixe (h-16 / h-20). -->
+                <div data-reveal class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 lg:pt-12 border-t border-border items-start">
+
+                    <!-- Stat 1 : années d'expérience -->
+                    <div data-reveal-child class="flex flex-col items-center text-center">
+                        <div class="h-16 sm:h-20 flex items-end justify-center mb-3">
+                            <span class="font-serif font-medium text-fg text-5xl sm:text-6xl leading-none">4</span>
+                        </div>
+                        <div class="text-xs sm:text-sm uppercase tracking-[0.15em] text-fg-muted font-medium">
+                            ans d'expérience
+                        </div>
+                    </div>
+
+                    <!-- Stat 2 : nombre de réalisations -->
+                    <div data-reveal-child class="flex flex-col items-center text-center">
+                        <div class="h-16 sm:h-20 flex items-end justify-center mb-3">
+                            <span class="font-serif font-medium text-fg text-5xl sm:text-6xl leading-none">6</span>
+                        </div>
+                        <div class="text-xs sm:text-sm uppercase tracking-[0.15em] text-fg-muted font-medium">
+                            réalisations majeures
+                        </div>
+                    </div>
+
+                    <!-- Stat 3 : diplôme (texte plus long → taille réduite d'un cran, mais wrapper identique) -->
+                    <div data-reveal-child class="flex flex-col items-center text-center">
+                        <div class="h-16 sm:h-20 flex items-end justify-center mb-3">
+                            <span class="font-serif font-medium text-fg text-4xl sm:text-5xl leading-none">Bac+5</span>
+                        </div>
+                        <div class="text-xs sm:text-sm uppercase tracking-[0.15em] text-fg-muted font-medium">
+                            Epitech MSc-Pro
+                        </div>
+                    </div>
+
+                    <!-- Stat 4 : note Malt (nombre + étoile alignés en baseline) -->
+                    <div data-reveal-child class="flex flex-col items-center text-center">
+                        <div class="h-16 sm:h-20 flex items-end justify-center gap-2 mb-3">
+                            <span class="font-serif font-medium text-fg text-5xl sm:text-6xl leading-none">5</span>
+                            <svg class="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400 fill-current shrink-0 relative -top-2 sm:-top-3" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="text-xs sm:text-sm uppercase tracking-[0.15em] text-fg-muted font-medium">
+                            avis Malt clients
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             SECTION 3 · Stack technique
+             6 groupes numérotés — approche éditoriale sobre :
+             pas de logos animés, juste typographie + chips.
+             ======================================================== -->
+        <section id="stack" aria-labelledby="stack-titre" class="py-24 lg:py-32 px-6 sm:px-8 border-t border-border/60">
+            <div class="max-w-content mx-auto" data-reveal>
+
+                <!-- Eyebrow -->
+                <p data-reveal-child class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-fg-muted font-medium mb-6">
+                    <span class="w-6 h-px bg-accent" aria-hidden="true"></span>
+                    Stack technique
+                </p>
+
+                <!-- H2 -->
+                <h2 id="stack-titre" data-reveal-child class="font-serif font-medium text-fg text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight mb-16 max-w-3xl">
+                    Un outillage éprouvé en production.
+                </h2>
+
+                <!-- Grille des 6 groupes technologiques -->
+                <div class="grid md:grid-cols-2 gap-10 lg:gap-14">
+
+                    <!-- 01 · Back-end -->
+                    <article data-reveal-child>
+                        <header class="flex items-baseline gap-4 mb-5 pb-4 border-b border-border">
+                            <span class="text-sm font-medium text-fg-subtle tabular-nums">01</span>
+                            <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl">Back-end</h3>
+                        </header>
+                        <ul role="list" class="flex flex-wrap gap-2">
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Laravel</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Symfony</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">PHP</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Node.js</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">.NET C#</li>
+                        </ul>
+                    </article>
+
+                    <!-- 02 · Front-end -->
+                    <article data-reveal-child>
+                        <header class="flex items-baseline gap-4 mb-5 pb-4 border-b border-border">
+                            <span class="text-sm font-medium text-fg-subtle tabular-nums">02</span>
+                            <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl">Front-end</h3>
+                        </header>
+                        <ul role="list" class="flex flex-wrap gap-2">
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Vue.js</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">React</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Next.js</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">TypeScript</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Tailwind CSS</li>
+                        </ul>
+                    </article>
+
+                    <!-- 03 · Mobile -->
+                    <article data-reveal-child>
+                        <header class="flex items-baseline gap-4 mb-5 pb-4 border-b border-border">
+                            <span class="text-sm font-medium text-fg-subtle tabular-nums">03</span>
+                            <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl">Mobile</h3>
+                        </header>
+                        <ul role="list" class="flex flex-wrap gap-2">
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">React Native</li>
+                        </ul>
+                    </article>
+
+                    <!-- 04 · Bases de données -->
+                    <article data-reveal-child>
+                        <header class="flex items-baseline gap-4 mb-5 pb-4 border-b border-border">
+                            <span class="text-sm font-medium text-fg-subtle tabular-nums">04</span>
+                            <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl">Bases de données</h3>
+                        </header>
+                        <ul role="list" class="flex flex-wrap gap-2">
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">PostgreSQL</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">MySQL</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">MongoDB</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Redis</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Elasticsearch</li>
+                        </ul>
+                    </article>
+
+                    <!-- 05 · DevOps -->
+                    <article data-reveal-child>
+                        <header class="flex items-baseline gap-4 mb-5 pb-4 border-b border-border">
+                            <span class="text-sm font-medium text-fg-subtle tabular-nums">05</span>
+                            <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl">DevOps</h3>
+                        </header>
+                        <ul role="list" class="flex flex-wrap gap-2">
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Docker</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Git</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">GitLab CI/CD</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Linux</li>
+                        </ul>
+                    </article>
+
+                    <!-- 06 · Spécialités -->
+                    <article data-reveal-child>
+                        <header class="flex items-baseline gap-4 mb-5 pb-4 border-b border-border">
+                            <span class="text-sm font-medium text-fg-subtle tabular-nums">06</span>
+                            <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl">Spécialités</h3>
+                        </header>
+                        <ul role="list" class="flex flex-wrap gap-2">
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">Sécurité web</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">RGAA</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">API REST</li>
+                            <li class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-fg bg-bg-subtle border border-border rounded-md">GraphQL</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             SECTION 4 · Réalisations
+             6 cartes par impact décroissant :
+             Nissan → NRJ → Mobilize → Cyber → Juri → B&K.
+             Vignette SVG + année + titre + secteur + description
+             + chips stack + accordéon "En savoir plus".
+             ======================================================== -->
+        <section id="realisations" aria-labelledby="realisations-titre" class="py-24 lg:py-32 px-6 sm:px-8 border-t border-border/60">
+            <div class="max-w-content mx-auto" data-reveal>
+
+                <!-- Eyebrow -->
+                <p data-reveal-child class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-fg-muted font-medium mb-6">
+                    <span class="w-6 h-px bg-accent" aria-hidden="true"></span>
+                    Réalisations
+                </p>
+
+                <!-- H2 -->
+                <h2 id="realisations-titre" data-reveal-child class="font-serif font-medium text-fg text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight mb-4 max-w-3xl">
+                    Six missions récentes.
+                </h2>
+
+                <!-- Chapeau introductif -->
+                <p data-reveal-child class="text-base sm:text-lg text-fg-muted max-w-2xl mb-16">
+                    Des projets d'audit RGAA pour un grand groupe automobile aux plateformes média haute audience, en passant par la cybersécurité.
+                </p>
+
+                <!-- Grille des 6 réalisations -->
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-10">
+
+                    <!-- ────────── 01 · Nissan Financial Services ────────── -->
+                    <article data-reveal-child class="flex flex-col rounded-xl overflow-hidden border border-border bg-bg-elev">
+                        <div class="relative aspect-[16/10] overflow-hidden bg-bg-subtle">
+                            <img src="assets/images/project-01-nissan.svg"
+                                 alt="Vignette du projet Nissan Financial Services"
+                                 width="400" height="250"
+                                 loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover">
+                            <!-- Pictogramme secteur : voiture (automobile) -->
+                            <svg class="pointer-events-none absolute top-12 right-4 w-16 h-16 sm:w-20 sm:h-20 text-white opacity-15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/>
+                                <circle cx="7" cy="17" r="2"/>
+                                <circle cx="17" cy="17" r="2"/>
+                            </svg>
+                            <span class="absolute top-4 right-4 px-2.5 py-1 text-xs font-semibold text-fg bg-bg/70 backdrop-blur-sm border border-border/60 rounded-md tabular-nums">2024</span>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col gap-4 flex-1">
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.15em] text-fg-muted font-medium mb-2">Finance automobile · Groupe Renault</p>
+                                <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl leading-tight">Nissan Financial Services</h3>
+                            </div>
+                            <p class="text-sm sm:text-base text-fg leading-relaxed">
+                                Mission freelance d'audit et de mise en conformité <strong class="font-semibold">RGAA niveau AA</strong> sur le site public <em class="not-italic text-fg-muted">nissanfinancialservices.fr</em>. Audit technique complet, correction des non-conformités, documentation.
+                            </p>
+                            <ul role="list" class="flex flex-wrap gap-1.5 mt-auto">
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">WordPress</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Elementor Pro</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">HTML5</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">CSS3</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">JavaScript</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">RGAA</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">WCAG</li>
+                            </ul>
+                            <details class="border-t border-border pt-4 mt-2">
+                                <summary class="flex items-center justify-between gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors">
+                                    <span>En savoir plus</span>
+                                    <svg class="details-chevron w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                                </summary>
+                                <ul class="mt-4 space-y-2 text-sm text-fg-muted leading-relaxed list-disc list-outside pl-5">
+                                    <li>Audit RGAA 4.1 niveau AA sur l'ensemble du périmètre public</li>
+                                    <li>Corrections : contrastes, structure sémantique, alternatives textuelles, navigation clavier</li>
+                                    <li>Rapport d'audit + documentation de conformité livrés aux équipes internes</li>
+                                    <li>Intégration dans WordPress + Elementor Pro sans régression sur l'existant</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </article>
+
+                    <!-- ────────── 02 · NRJ Group ────────── -->
+                    <article data-reveal-child class="flex flex-col rounded-xl overflow-hidden border border-border bg-bg-elev">
+                        <div class="relative aspect-[16/10] overflow-hidden bg-bg-subtle">
+                            <img src="assets/images/project-02-nrj.svg"
+                                 alt="Vignette du projet NRJ Group"
+                                 width="400" height="250"
+                                 loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover">
+                            <!-- Pictogramme secteur : ondes broadcast (média/radio) -->
+                            <svg class="pointer-events-none absolute top-12 right-4 w-16 h-16 sm:w-20 sm:h-20 text-white opacity-15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+                                <circle cx="12" cy="12" r="6"/>
+                                <circle cx="12" cy="12" r="10"/>
+                            </svg>
+                            <span class="absolute top-4 right-4 px-2.5 py-1 text-xs font-semibold text-fg bg-bg/70 backdrop-blur-sm border border-border/60 rounded-md tabular-nums">2022–2024</span>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col gap-4 flex-1">
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.15em] text-fg-muted font-medium mb-2">Médias · Audiovisuel</p>
+                                <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl leading-tight">NRJ Group</h3>
+                            </div>
+                            <p class="text-sm sm:text-base text-fg leading-relaxed">
+                                <strong class="font-semibold">Deux ans</strong> de développement Full-Stack au sein du pôle digital. Conception et développement de fonctionnalités éditoriales sur des sites à fort trafic, contribution au CMS interne sur-mesure utilisé quotidiennement par les rédactions.
+                            </p>
+                            <ul role="list" class="flex flex-wrap gap-1.5 mt-auto">
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Symfony</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">MongoDB</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Redis</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Elasticsearch</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">React</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">TypeScript</li>
+                            </ul>
+                            <details class="border-t border-border pt-4 mt-2">
+                                <summary class="flex items-center justify-between gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors">
+                                    <span>En savoir plus</span>
+                                    <svg class="details-chevron w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                                </summary>
+                                <ul class="mt-4 space-y-2 text-sm text-fg-muted leading-relaxed list-disc list-outside pl-5">
+                                    <li>Mission longue durée en équipe intégrée du pôle digital</li>
+                                    <li>Fonctionnalités éditoriales sur des sites à trafic important</li>
+                                    <li>Contribution au CMS interne : Symfony back-office, MongoDB pour la donnée, Redis en cache, Elasticsearch pour la recherche</li>
+                                    <li>Migration progressive du Front vers React + TypeScript</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </article>
+
+                    <!-- ────────── 03 · Mobilize Lease & Co ────────── -->
+                    <article data-reveal-child class="flex flex-col rounded-xl overflow-hidden border border-border bg-bg-elev">
+                        <div class="relative aspect-[16/10] overflow-hidden bg-bg-subtle">
+                            <img src="assets/images/project-03-mobilize.svg"
+                                 alt="Vignette du projet Mobilize Lease and Co"
+                                 width="400" height="250"
+                                 loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover">
+                            <!-- Pictogramme secteur : clé (leasing / location) -->
+                            <svg class="pointer-events-none absolute top-12 right-4 w-16 h-16 sm:w-20 sm:h-20 text-white opacity-15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="7.5" cy="15.5" r="5.5"/>
+                                <path d="m21 2-9.6 9.6"/>
+                                <path d="m15.5 7.5 3 3L22 7l-3-3"/>
+                            </svg>
+                            <span class="absolute top-4 right-4 px-2.5 py-1 text-xs font-semibold text-fg bg-bg/70 backdrop-blur-sm border border-border/60 rounded-md tabular-nums">2024</span>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col gap-4 flex-1">
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.15em] text-fg-muted font-medium mb-2">Finance automobile · Groupe Renault</p>
+                                <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl leading-tight">Mobilize Lease &amp; Co</h3>
+                            </div>
+                            <p class="text-sm sm:text-base text-fg leading-relaxed">
+                                Second site du groupe Mobilize Financial Services traité en conformité <strong class="font-semibold">RGAA niveau AA</strong>. Audit technique, corrections d'accessibilité, documentation transmise aux équipes internes.
+                            </p>
+                            <ul role="list" class="flex flex-wrap gap-1.5 mt-auto">
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">WordPress</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Elementor Pro</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">JavaScript</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">RGAA</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">WCAG</li>
+                            </ul>
+                            <details class="border-t border-border pt-4 mt-2">
+                                <summary class="flex items-center justify-between gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors">
+                                    <span>En savoir plus</span>
+                                    <svg class="details-chevron w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                                </summary>
+                                <ul class="mt-4 space-y-2 text-sm text-fg-muted leading-relaxed list-disc list-outside pl-5">
+                                    <li>Seconde intervention RGAA au sein du groupe Mobilize Financial Services</li>
+                                    <li>Corrections ARIA, navigation clavier, structure d'en-têtes</li>
+                                    <li>Documentation d'accessibilité transmise pour maintien de la conformité en interne</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </article>
+
+                    <!-- ────────── 04 · Mission cybersécurité (NDA) ────────── -->
+                    <article data-reveal-child class="flex flex-col rounded-xl overflow-hidden border border-border bg-bg-elev">
+                        <div class="relative aspect-[16/10] overflow-hidden bg-bg-subtle">
+                            <img src="assets/images/project-04-cyber.svg"
+                                 alt="Vignette de la mission cybersécurité sous NDA"
+                                 width="400" height="250"
+                                 loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover">
+                            <!-- Pictogramme secteur : bouclier + verrou (cybersécurité) -->
+                            <svg class="pointer-events-none absolute top-12 right-4 w-16 h-16 sm:w-20 sm:h-20 text-white opacity-15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 3 L4 6 v6 c0 4 4 8 8 9 c4 -1 8 -5 8 -9 V6 z"/>
+                                <rect x="10" y="12" width="4" height="4" rx="0.5"/>
+                                <path d="M11 12 V10.5 a1 1 0 1 1 2 0 V12"/>
+                            </svg>
+                            <span class="absolute top-4 right-4 px-2.5 py-1 text-xs font-semibold text-fg bg-bg/70 backdrop-blur-sm border border-border/60 rounded-md tabular-nums">2025 · en cours</span>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col gap-4 flex-1">
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.15em] text-fg-muted font-medium mb-2">Cybersécurité</p>
+                                <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl leading-tight">Acteur cybersécurité <span class="text-fg-subtle font-normal">(NDA)</span></h3>
+                            </div>
+                            <p class="text-sm sm:text-base text-fg leading-relaxed">
+                                Développement de fonctionnalités métier sur des logiciels sensibles à forte exigence de sécurité chez un <strong class="font-semibold">acteur majeur de la cybersécurité française</strong>. Forte attention portée au chiffrement, à la protection des données utilisateurs et à la qualité du code.
+                            </p>
+                            <ul role="list" class="flex flex-wrap gap-1.5 mt-auto">
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Laravel</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Vue.js</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">MySQL</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Docker</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Sécurité web</li>
+                            </ul>
+                            <details class="border-t border-border pt-4 mt-2">
+                                <summary class="flex items-center justify-between gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors">
+                                    <span>En savoir plus</span>
+                                    <svg class="details-chevron w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                                </summary>
+                                <ul class="mt-4 space-y-2 text-sm text-fg-muted leading-relaxed list-disc list-outside pl-5">
+                                    <li>Mission en cours chez un acteur majeur français de la cybersécurité</li>
+                                    <li>Développement Full-Stack sur des applications métier à forte exigence de sécurité</li>
+                                    <li>Attention portée au chiffrement, à la protection des données, à la robustesse du code, aux revues croisées</li>
+                                    <li>Détails précis communiqués sur demande, sous accord de confidentialité</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </article>
+
+                    <!-- ────────── 05 · JuriServices ────────── -->
+                    <article data-reveal-child class="flex flex-col rounded-xl overflow-hidden border border-border bg-bg-elev">
+                        <div class="relative aspect-[16/10] overflow-hidden bg-bg-subtle">
+                            <img src="assets/images/project-05-juri.svg"
+                                 alt="Vignette du projet JuriServices"
+                                 width="400" height="250"
+                                 loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover">
+                            <!-- Pictogramme secteur : balance (justice / legaltech) -->
+                            <svg class="pointer-events-none absolute top-12 right-4 w-16 h-16 sm:w-20 sm:h-20 text-white opacity-15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 4 v17"/>
+                                <path d="M8 21 h8"/>
+                                <path d="M4 8 h16"/>
+                                <path d="M2 9 l4 5 4 -5 z"/>
+                                <path d="M14 9 l4 5 4 -5 z"/>
+                            </svg>
+                            <span class="absolute top-4 right-4 px-2.5 py-1 text-xs font-semibold text-fg bg-bg/70 backdrop-blur-sm border border-border/60 rounded-md tabular-nums">2021–2022</span>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col gap-4 flex-1">
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.15em] text-fg-muted font-medium mb-2">LegalTech</p>
+                                <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl leading-tight">JuriServices</h3>
+                            </div>
+                            <p class="text-sm sm:text-base text-fg leading-relaxed">
+                                Maintenance et évolution d'une plateforme juridique de mise en relation entre avocats et clients, dans un contexte de <strong class="font-semibold">migration progressive de C# .NET vers Laravel</strong>. Conception parallèle d'un second site sous WordPress.
+                            </p>
+                            <ul role="list" class="flex flex-wrap gap-1.5 mt-auto">
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">C# .NET</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">SQL Server</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Laravel</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">PHP</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">WordPress</li>
+                            </ul>
+                            <details class="border-t border-border pt-4 mt-2">
+                                <summary class="flex items-center justify-between gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors">
+                                    <span>En savoir plus</span>
+                                    <svg class="details-chevron w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                                </summary>
+                                <ul class="mt-4 space-y-2 text-sm text-fg-muted leading-relaxed list-disc list-outside pl-5">
+                                    <li>Maintenance corrective et évolutive de la plateforme legacy C# .NET / SQL Server</li>
+                                    <li>Contribution à la migration progressive vers Laravel / PHP</li>
+                                    <li>Développement en parallèle d'un second site sous WordPress</li>
+                                    <li>Périmètre : support niveau 3 aux évolutions fonctionnelles</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </article>
+
+                    <!-- ────────── 06 · B&K Immo ────────── -->
+                    <article data-reveal-child class="flex flex-col rounded-xl overflow-hidden border border-border bg-bg-elev">
+                        <div class="relative aspect-[16/10] overflow-hidden bg-bg-subtle">
+                            <img src="assets/images/project-06-bk.svg"
+                                 alt="Vignette du projet B et K Immo"
+                                 width="400" height="250"
+                                 loading="lazy" decoding="async"
+                                 class="w-full h-full object-cover">
+                            <!-- Pictogramme secteur : maison archétype (immobilier) -->
+                            <svg class="pointer-events-none absolute top-12 right-4 w-16 h-16 sm:w-20 sm:h-20 text-white opacity-15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 12 L12 3 L21 12"/>
+                                <path d="M5 12 v9 h14 v-9"/>
+                                <path d="M10 21 v-5 h4 v5"/>
+                            </svg>
+                            <span class="absolute top-4 right-4 px-2.5 py-1 text-xs font-semibold text-fg bg-bg/70 backdrop-blur-sm border border-border/60 rounded-md tabular-nums">2020–2021</span>
+                        </div>
+                        <div class="p-6 sm:p-7 flex flex-col gap-4 flex-1">
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.15em] text-fg-muted font-medium mb-2">Immobilier · Paris</p>
+                                <h3 class="font-serif font-medium text-fg text-xl sm:text-2xl leading-tight">B&amp;K Immo</h3>
+                            </div>
+                            <p class="text-sm sm:text-base text-fg leading-relaxed">
+                                Conception et développement complet d'un site web pour une agence immobilière parisienne : <strong class="font-semibold">recherche avancée multi-critères, carte interactive, back-office d'administration</strong>. Optimisation SEO technique pour le référencement local.
+                            </p>
+                            <ul role="list" class="flex flex-wrap gap-1.5 mt-auto">
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">Symfony</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">PHP</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">JavaScript</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">MySQL</li>
+                                <li class="inline-flex items-center px-2.5 py-1 text-xs font-medium text-fg-muted bg-bg-subtle border border-border rounded">SEO</li>
+                            </ul>
+                            <details class="border-t border-border pt-4 mt-2">
+                                <summary class="flex items-center justify-between gap-2 text-sm font-medium text-fg-muted hover:text-accent transition-colors">
+                                    <span>En savoir plus</span>
+                                    <svg class="details-chevron w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                                </summary>
+                                <ul class="mt-4 space-y-2 text-sm text-fg-muted leading-relaxed list-disc list-outside pl-5">
+                                    <li>Conception complète : cadrage, architecture, développement, mise en ligne</li>
+                                    <li>Moteur de recherche multi-critères (localisation, budget, type de bien, surface)</li>
+                                    <li>Carte interactive avec filtres dynamiques</li>
+                                    <li>Back-office administrateur sur mesure (annonces, photos, contacts)</li>
+                                    <li>Optimisation SEO local : données structurées, sitemap, méta géographiques</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             SECTION 5 · Témoignages
+             3 cartes : 2 avis Malt existants + 1 placeholder.
+             Structure blockquote sémantique + citation + note étoiles.
+             CTA final vers le profil Malt.
+             ======================================================== -->
+        <section id="temoignages" aria-labelledby="temoignages-titre" class="py-24 lg:py-32 px-6 sm:px-8 border-t border-border/60">
+
+            <!-- Symbole étoile réutilisable — défini une fois, référencé N fois -->
+            <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+                <symbol id="icon-star" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </symbol>
+            </svg>
+
+            <div class="max-w-content mx-auto" data-reveal>
+
+                <!-- Eyebrow -->
+                <p data-reveal-child class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-fg-muted font-medium mb-6">
+                    <span class="w-6 h-px bg-accent" aria-hidden="true"></span>
+                    Témoignages
+                </p>
+
+                <!-- H2 -->
+                <h2 id="temoignages-titre" data-reveal-child class="font-serif font-medium text-fg text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight mb-16 max-w-3xl">
+                    Ce que mes clients en disent.
+                </h2>
+
+                <!-- Grille des 3 témoignages -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+                    <!-- ────────── 01 · Alexandra — Mobilize FS 2024 ────────── -->
+                    <article data-reveal-child class="relative flex flex-col rounded-xl border border-border bg-bg-elev p-7 sm:p-8">
+                        <!-- Guillemet ouvrant décoratif -->
+                        <span class="font-serif text-7xl leading-none text-accent select-none absolute -top-3 left-6" aria-hidden="true">&ldquo;</span>
+
+                        <blockquote class="text-fg text-base leading-relaxed mt-6 mb-6 flex-1">
+                            Un grand plaisir de travailler avec Jérémy. Il est passionné par son métier et exigeant dans son travail. Il est proactif et a le sens du travail bien fait. Pédagogue et flexible, Jérémy a su s'adapter à nos différentes problématiques métiers et nos contraintes pour parfaitement répondre à nos besoins.
+                        </blockquote>
+
+                        <figcaption class="pt-5 border-t border-border">
+                            <p class="font-serif font-medium text-fg">Alexandra</p>
+                            <p class="text-xs sm:text-sm text-fg-muted mt-1">Mobilize Financial Services · 2024</p>
+                            <div class="flex gap-0.5 mt-3" role="img" aria-label="Note : 5 étoiles sur 5">
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                            </div>
+                        </figcaption>
+                    </article>
+
+                    <!-- ────────── 02 · Remy — 2023 ────────── -->
+                    <article data-reveal-child class="relative flex flex-col rounded-xl border border-border bg-bg-elev p-7 sm:p-8">
+                        <span class="font-serif text-7xl leading-none text-accent select-none absolute -top-3 left-6" aria-hidden="true">&ldquo;</span>
+
+                        <blockquote class="text-fg text-base leading-relaxed mt-6 mb-6 flex-1">
+                            Je suis ravi d'avoir travaillé avec Jeremy pour mon projet. J'ai été impressionné par son professionnalisme et sa capacité à répondre à mes besoins tout en respectant les délais. Le résultat final a respecté mes attentes.
+                        </blockquote>
+
+                        <figcaption class="pt-5 border-t border-border">
+                            <p class="font-serif font-medium text-fg">Rémy</p>
+                            <p class="text-xs sm:text-sm text-fg-muted mt-1">Promotion Azgar · 2023</p>
+                            <div class="flex gap-0.5 mt-3" role="img" aria-label="Note : 5 étoiles sur 5">
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                                <svg class="w-4 h-4 text-yellow-400 fill-current" aria-hidden="true"><use href="#icon-star"/></svg>
+                            </div>
+                        </figcaption>
+                    </article>
+
+                    <!-- ────────── 03 · Placeholder — futur témoignage ────────── -->
+                    <article data-reveal-child class="flex flex-col items-center justify-center text-center rounded-xl border border-dashed border-border bg-bg-elev/40 p-7 sm:p-8 md:col-span-2 lg:col-span-1 min-h-[280px]">
+                        <!-- Icône bulle discussion -->
+                        <svg class="w-10 h-10 text-fg-subtle mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                        <p class="font-serif font-medium text-fg text-lg mb-2">Votre retour trouvera sa place ici.</p>
+                        <p class="text-sm text-fg-muted max-w-xs leading-relaxed">
+                            D'autres témoignages sont disponibles sur mon profil Malt.
+                        </p>
+                        <a href="https://www.malt.fr/profile/jeremymd"
+                           target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-1.5 mt-6 text-sm font-semibold text-accent hover:text-accent-hov transition-colors">
+                            Consulter Malt
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M7 17l10-10M7 7h10v10"/>
+                            </svg>
+                        </a>
+                    </article>
+
+                </div>
+
+                <!-- CTA de fin — invite à consulter le profil Malt complet -->
+                <div data-reveal-child class="mt-14 lg:mt-16 flex justify-center">
+                    <a href="https://www.malt.fr/profile/jeremymd"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2 text-sm text-fg-muted hover:text-accent transition-colors font-medium">
+                        Voir tous les avis sur Malt
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14M13 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
+             SECTION 6 · Contact
+             Layout 5/7 éditorial cohérent avec À propos et Témoignages.
+             Gauche : H2 + intro + email H3 + CTA M'écrire + localisation.
+             Droite : 3 cartes sociales (LinkedIn, GitHub, Malt) avec
+                     tagline et hover subtil (rise + accent border).
+             ======================================================== -->
+        <section id="contact" aria-labelledby="contact-titre" class="py-24 lg:py-32 px-6 sm:px-8 border-t border-border/60">
+            <div class="max-w-content mx-auto" data-reveal>
+
+                <!-- Eyebrow -->
+                <p data-reveal-child class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-fg-muted font-medium mb-6">
+                    <span class="w-6 h-px bg-accent" aria-hidden="true"></span>
+                    Contact
+                </p>
+
+                <!-- H2 -->
+                <h2 id="contact-titre" data-reveal-child class="font-serif font-medium text-fg text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight mb-6 max-w-3xl">
+                    Parlons de votre projet.
+                </h2>
+
+                <!-- Intro -->
+                <p data-reveal-child class="text-base sm:text-lg text-fg-muted max-w-2xl mb-16 leading-relaxed">
+                    Mission freelance, échange technique ou simple prise de contact — je réponds à chaque message sous 24&nbsp;h ouvrées.
+                </p>
+
+                <!-- Grille 5/7 -->
+                <div class="grid md:grid-cols-12 gap-10 lg:gap-16">
+
+                    <!-- ────────── Colonne gauche 5/12 ────────── -->
+                    <div data-reveal-child class="md:col-span-5">
+
+                        <!-- Label email -->
+                        <p class="text-xs uppercase tracking-[0.15em] text-fg-muted font-medium mb-3">Écrivez-moi</p>
+
+                        <!-- Email en H3 accent — grand, cliquable, copiable -->
+                        <a href="mailto:madarjeremy1@gmail.com"
+                           class="block font-serif font-medium text-accent hover:text-accent-hov transition-colors mb-6 break-all text-2xl sm:text-3xl leading-tight">
+                            madarjeremy1@gmail.com
+                        </a>
+
+                        <!-- Bouton M'écrire avec mailto préformaté -->
+                        <a href="mailto:madarjeremy1@gmail.com?subject=Contact%20depuis%20votre%20portfolio&body=Bonjour%20Jeremy%2C"
+                           class="btn-primary inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg font-semibold text-sm sm:text-base transition-all duration-200 ease-out shadow-sm hover:shadow-md active:scale-[0.98]">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <path d="M22 6l-10 7L2 6"/>
+                            </svg>
+                            M'écrire
+                        </a>
+
+                        <!-- Localisation -->
+                        <div class="mt-12 pt-8 border-t border-border">
+                            <p class="text-xs uppercase tracking-[0.15em] text-fg-muted font-medium mb-2">Basé à</p>
+                            <p class="font-serif text-fg text-xl sm:text-2xl inline-flex items-center gap-2">
+                                <svg class="w-5 h-5 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Paris, France
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- ────────── Colonne droite 7/12 : 3 cartes sociales ────────── -->
+                    <div data-reveal-child class="md:col-span-7 flex flex-col gap-4">
+
+                        <!-- Carte LinkedIn -->
+                        <a href="https://www.linkedin.com/in/jeremy-madar/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="group flex items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-xl border border-border bg-bg-elev hover:border-accent hover:-translate-y-0.5 transition-all duration-200">
+                            <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-md bg-bg-subtle text-fg-muted group-hover:bg-accent/15 group-hover:text-accent transition-colors">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-serif font-medium text-fg text-lg sm:text-xl leading-tight">LinkedIn</p>
+                                <p class="text-sm text-fg-muted mt-1">Voir mon parcours détaillé</p>
+                            </div>
+                            <svg class="w-5 h-5 text-fg-subtle group-hover:text-accent group-hover:translate-x-0.5 transition-all shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14M13 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+
+                        <!-- Carte GitHub -->
+                        <a href="https://github.com/JeremyMadar-Dev"
+                           target="_blank" rel="noopener noreferrer"
+                           class="group flex items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-xl border border-border bg-bg-elev hover:border-accent hover:-translate-y-0.5 transition-all duration-200">
+                            <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-md bg-bg-subtle text-fg-muted group-hover:bg-accent/15 group-hover:text-accent transition-colors">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-serif font-medium text-fg text-lg sm:text-xl leading-tight">GitHub</p>
+                                <p class="text-sm text-fg-muted mt-1">Mes projets open source</p>
+                            </div>
+                            <svg class="w-5 h-5 text-fg-subtle group-hover:text-accent group-hover:translate-x-0.5 transition-all shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14M13 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+
+                        <!-- Carte Malt -->
+                        <a href="https://www.malt.fr/profile/jeremymd"
+                           target="_blank" rel="noopener noreferrer"
+                           class="group flex items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-xl border border-border bg-bg-elev hover:border-accent hover:-translate-y-0.5 transition-all duration-200">
+                            <div class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-md bg-bg-subtle text-fg-muted group-hover:bg-accent/15 group-hover:text-accent transition-colors">
+                                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M17.484 13.65a5.485 5.485 0 0 0 5.185-1.399 5.478 5.478 0 0 0 0-7.745 5.478 5.478 0 0 0-7.744 0l-1.4 1.399zm-1.398 1.398l-7.036 7.037a5.478 5.478 0 0 1-7.745 0 5.478 5.478 0 0 1 0-7.746l7.037-7.036c-2.14 2.139-2.14 5.606 0 7.745 2.14 2.139 5.606 2.139 7.744 0zm-4.586-4.586a2.85 2.85 0 1 1 0-5.702 2.851 2.851 0 0 1 0 5.702zm2.148 6.973a2.851 2.851 0 1 1 0 5.702 2.85 2.85 0 0 1 0-5.702zM7.037 22.601a2.85 2.85 0 1 1 0-5.702 2.85 2.85 0 0 1 0 5.702z"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-serif font-medium text-fg text-lg sm:text-xl leading-tight">Malt</p>
+                                <p class="text-sm text-fg-muted mt-1">Consulter mon profil freelance et mes 3 avis 5&#9733;</p>
+                            </div>
+                            <svg class="w-5 h-5 text-fg-subtle group-hover:text-accent group-hover:translate-x-0.5 transition-all shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M5 12h14M13 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+         SECTION 7 · Footer
+         Une seule ligne minimaliste : copyright · mention · repo.
+         ============================================================ -->
+    <footer role="contentinfo" class="border-t border-border/60 px-6 sm:px-8 py-8">
+        <div class="max-w-content mx-auto flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-fg-subtle">
+            <p>© 2026 Jeremy MADAR</p>
+            <span aria-hidden="true">·</span>
+            <p>
+                Conçu et développé avec
+                <span class="text-accent" role="img" aria-label="amour">&#10084;</span>
+                à Paris
+            </p>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/JeremyMadar-Dev/JeremyMadar-Dev.github.io"
+               target="_blank" rel="noopener noreferrer"
+               class="hover:text-accent transition-colors underline underline-offset-4 decoration-fg-subtle/40 hover:decoration-accent">
+                Voir le code source
+            </a>
+        </div>
+    </footer>
+
+    <!-- Script principal : dark mode toggle, smooth scroll, animations reveal -->
+    <script src="scripts/main.js" defer></script>
+
+</body>
+</html>
