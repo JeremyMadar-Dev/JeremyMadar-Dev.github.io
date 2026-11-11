@@ -456,7 +456,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
       <p class="r d1">Clique sur une expérience pour voir le détail.</p>
     </div>
     <div class="tl r">
-      <details class="job" open>
+      <details class="job" name="parcours" open>
         <summary><span class="when"><span class="now">● </span>janv. 2025 — auj.</span><div><h3>Orange Cyberdefense</h3><span class="role">Ingénieur Full Stack · CDI ASTEK</span></div><span class="chev" aria-hidden="true">+</span></summary>
         <div class="job-body"><div>
           <ul>
@@ -469,7 +469,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
           <div class="tags"><span class="tag">Laravel</span><span class="tag">Vue.js</span><span class="tag">TypeScript</span><span class="tag">MySQL</span><span class="tag">Redis</span><span class="tag">GitLab CI</span></div>
         </div></div>
       </details>
-      <details class="job">
+      <details class="job" name="parcours">
         <summary><span class="when">sept. — déc. 2024</span><div><h3>Mobilize Financial Services</h3><span class="role">Développeur Full Stack · freelance</span></div><span class="chev" aria-hidden="true">+</span></summary>
         <div class="job-body"><div>
           <ul>
@@ -480,7 +480,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
           <div class="tags"><span class="tag">RGAA</span><span class="tag">WordPress</span><span class="tag">JavaScript</span></div>
         </div></div>
       </details>
-      <details class="job">
+      <details class="job" name="parcours">
         <summary><span class="when">oct. 2022 — juil. 2024</span><div><h3>NRJ Group</h3><span class="role">Développeur Full Stack · alternance</span></div><span class="chev" aria-hidden="true">+</span></summary>
         <div class="job-body"><div>
           <ul>
@@ -491,7 +491,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
           <div class="tags"><span class="tag">Symfony</span><span class="tag">React</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Elasticsearch</span></div>
         </div></div>
       </details>
-      <details class="job">
+      <details class="job" name="parcours">
         <summary><span class="when">déc. 2021 — août 2022</span><div><h3>JuriServices</h3><span class="role">Développeur · alternance</span></div><span class="chev" aria-hidden="true">+</span></summary>
         <div class="job-body"><div>
           <ul>
@@ -501,7 +501,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
           <div class="tags"><span class="tag">C# .NET</span><span class="tag">SQL Server</span><span class="tag">Laravel</span><span class="tag">WordPress</span></div>
         </div></div>
       </details>
-      <details class="job">
+      <details class="job" name="parcours">
         <summary><span class="when">sept. 2020 — août 2021</span><div><h3>B&K Immo</h3><span class="role">Développeur web</span></div><span class="chev" aria-hidden="true">+</span></summary>
         <div class="job-body"><div>
           <ul>
@@ -572,11 +572,11 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
     <div class="faq">
       <div class="r"><span class="kicker">07 · FAQ</span><h2>Questions <em>fréquentes</em></h2></div>
       <div class="faq-list r d1">
-        <details class="q"><summary>Quel type d'opportunités vous intéresse ?</summary><p>Un poste ou une mission Full Stack sur des applications métier exigeantes, avec un vrai périmètre et des choix techniques à porter. Laravel, Symfony, Vue.js ou React.</p></details>
-        <details class="q"><summary>Pouvez-vous travailler en autonomie ?</summary><p>Oui, c'est mon quotidien. Chez Orange Cyberdefense, je porte seul une application du développement jusqu'à la mise en production, avec les choix techniques de mon périmètre.</p></details>
-        <details class="q"><summary>Où êtes-vous basé ?</summary><p>À Paris. Les modalités sur site ou à distance se discutent selon le projet.</p></details>
-        <details class="q"><summary>Pouvez-vous reprendre un projet existant ?</summary><p>Oui. J'ai repris et fait évoluer des bases de code existantes, notamment chez NRJ Group et JuriServices, avec des migrations progressives sans casser l'existant.</p></details>
-        <details class="q"><summary>Comment vous contacter ?</summary><p>Par e-mail ou sur LinkedIn. Je réponds rapidement, en général dans la journée.</p></details>
+        <details class="q" name="faq"><summary>Quel type d'opportunités vous intéresse ?</summary><p>Un poste ou une mission Full Stack sur des applications métier exigeantes, avec un vrai périmètre et des choix techniques à porter. Laravel, Symfony, Vue.js ou React.</p></details>
+        <details class="q" name="faq"><summary>Pouvez-vous travailler en autonomie ?</summary><p>Oui, c'est mon quotidien. Chez Orange Cyberdefense, je porte seul une application du développement jusqu'à la mise en production, avec les choix techniques de mon périmètre.</p></details>
+        <details class="q" name="faq"><summary>Où êtes-vous basé ?</summary><p>À Paris. Les modalités sur site ou à distance se discutent selon le projet.</p></details>
+        <details class="q" name="faq"><summary>Pouvez-vous reprendre un projet existant ?</summary><p>Oui. J'ai repris et fait évoluer des bases de code existantes, notamment chez NRJ Group et JuriServices, avec des migrations progressives sans casser l'existant.</p></details>
+        <details class="q" name="faq"><summary>Comment vous contacter ?</summary><p>Par e-mail ou sur LinkedIn. Je réponds rapidement, en général dans la journée.</p></details>
       </div>
     </div>
   </section>
@@ -634,6 +634,10 @@ $('#copy').addEventListener('click',e=>{
   const m=e.currentTarget.dataset.mail;
   (navigator.clipboard?navigator.clipboard.writeText(m):Promise.reject()).then(()=>toast('Adresse copiée')).catch(()=>toast(m));
 });
+document.querySelectorAll('details[name]').forEach(d=>d.addEventListener('toggle',()=>{
+  if(!d.open)return;
+  document.querySelectorAll('details[name="'+d.getAttribute('name')+'"]').forEach(o=>{if(o!==d)o.open=false});
+}));
 const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 $$('.r').forEach(el=>io.observe(el));
 const cio=new IntersectionObserver(es=>es.forEach(x=>{
