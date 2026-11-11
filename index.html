@@ -130,16 +130,20 @@ h2 em{font-style:italic;color:var(--muted)}
 .cases{display:grid;gap:16px}
 .case{display:grid;grid-template-columns:1fr 1.25fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--card);transition:border-color .3s,box-shadow .3s}
 .case:hover{border-color:var(--line2);box-shadow:var(--shadow)}
-.case-vis{position:relative;min-height:320px;padding:34px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;color:#fff}
-.case-vis::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:linear-gradient(160deg,#000,transparent 75%);mask-image:linear-gradient(160deg,#000,transparent 75%)}
-.v1{background:radial-gradient(400px 300px at 80% 20%,#ff7a1a55,transparent),linear-gradient(150deg,#1a1410,#0d0b0a)}
-.v2{background:radial-gradient(400px 300px at 80% 20%,#e8114d55,transparent),linear-gradient(150deg,#1d0d16,#0d0a0d)}
-.v3{background:radial-gradient(400px 300px at 80% 20%,#2ad3b455,transparent),linear-gradient(150deg,#0b1a1a,#0a0f10)}
-.v4{background:radial-gradient(400px 300px at 80% 20%,#7aa2ff55,transparent),linear-gradient(150deg,#0e1424,#0a0d14)}
+.case-vis{position:relative;min-height:260px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;overflow:hidden;color:var(--txt);border-right:1px solid var(--line);background:radial-gradient(360px 240px at 90% 0%,color-mix(in srgb,var(--txt) 6%,transparent),transparent 70%),var(--card2)}
+.case-vis::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;-webkit-mask-image:radial-gradient(ellipse at 100% 0%,#000,transparent 70%);mask-image:radial-gradient(ellipse at 100% 0%,#000,transparent 70%);opacity:.7}
 .case-vis>*{position:relative;z-index:1}
-.case-tag{font:500 12px var(--mono);opacity:.75}
-.case-big{font:400 clamp(54px,6vw,76px)/1 var(--serif);letter-spacing:-.02em}
-.case-big small{display:block;font:400 15px var(--sans);opacity:.7;margin-top:10px;letter-spacing:0}
+.case-tag{font:500 11.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.brand{display:flex;align-items:center;gap:16px}
+.mark{width:76px;height:76px;flex:none;border-radius:20px;display:grid;place-items:center;background:var(--card);border:1px solid var(--line2);box-shadow:var(--shadow);overflow:hidden}
+.mark span{font:400 26px/1 var(--serif);letter-spacing:-.01em}
+.mark img{width:72%;height:72%;object-fit:contain}
+.mark.has-logo span{display:none}
+.brand b{display:block;font:400 22px/1.15 var(--serif)}
+.brand small{display:block;font-size:13px;color:var(--muted)}
+.case-big{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line)}
+.case-big strong{font:400 clamp(44px,4.6vw,60px)/1 var(--serif);letter-spacing:-.02em;font-weight:400}
+.case-big small{font-size:14px;color:var(--muted)}
 .case-body{padding:36px 40px}
 .case-body h3{font:400 34px/1.1 var(--serif);margin-bottom:6px}
 .case-role{font-size:14px;color:var(--accent);margin-bottom:22px}
@@ -241,7 +245,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
   .cards3,.steps,.stack,.edu,.faq{grid-template-columns:1fr}
   .faq{gap:32px}
   .case{grid-template-columns:1fr}
-  .case-vis{min-height:220px}
+  .case-vis{min-height:0;border-right:0;border-bottom:1px solid var(--line)}
   .case-body{padding:28px 24px}
   .cgrid{grid-template-columns:1fr}
   .job summary{grid-template-columns:1fr auto;gap:6px 16px}
@@ -372,9 +376,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
     </div>
     <div class="cases">
       <article class="case r">
-        <div class="case-vis v4">
-          <span class="case-tag">2025 — aujourd'hui · cybersécurité</span>
-          <div class="case-big">100 %<small>autonomie, du développement à la production</small></div>
+        <div class="case-vis">
+          <span class="case-tag">Réalisation</span>
+          <div class="brand"><div class="mark"><img src="./assets/logos/orange-cyberdefense.svg" alt="" onload="this.parentElement.classList.add('has-logo')" onerror="this.remove()"><span>OC</span></div><div><b>Cybersécurité</b><small>2025 — aujourd'hui</small></div></div>
+          <div class="case-big"><strong>100 %</strong><small>d'autonomie, du dév à la prod</small></div>
         </div>
         <div class="case-body">
           <h3>Orange Cyberdefense <span class="conf">🔒 confidentiel</span></h3>
@@ -389,9 +394,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
         </div>
       </article>
       <article class="case r">
-        <div class="case-vis v2">
-          <span class="case-tag">2022 — 2024 · médias</span>
-          <div class="case-big">4 sites<small>nationaux à forte audience</small></div>
+        <div class="case-vis">
+          <span class="case-tag">Réalisation</span>
+          <div class="brand"><div class="mark"><img src="./assets/logos/nrj-group.svg" alt="" onload="this.parentElement.classList.add('has-logo')" onerror="this.remove()"><span>NRJ</span></div><div><b>Médias</b><small>2022 — 2024</small></div></div>
+          <div class="case-big"><strong>4 sites</strong><small>nationaux à forte audience</small></div>
         </div>
         <div class="case-body">
           <h3>NRJ Group</h3>
@@ -406,9 +412,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
         </div>
       </article>
       <article class="case r">
-        <div class="case-vis v3">
-          <span class="case-tag">2024 · finance automobile</span>
-          <div class="case-big">3 sites<small>mis en conformité RGAA</small></div>
+        <div class="case-vis">
+          <span class="case-tag">Réalisation</span>
+          <div class="brand"><div class="mark"><img src="./assets/logos/mobilize.svg" alt="" onload="this.parentElement.classList.add('has-logo')" onerror="this.remove()"><span>MF</span></div><div><b>Finance automobile</b><small>Groupe Renault · 2024</small></div></div>
+          <div class="case-big"><strong>3 sites</strong><small>mis en conformité RGAA</small></div>
         </div>
         <div class="case-body">
           <h3>Mobilize Financial Services</h3>
@@ -423,9 +430,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
         </div>
       </article>
       <article class="case r">
-        <div class="case-vis v1">
-          <span class="case-tag">2020 — 2021 · immobilier</span>
-          <div class="case-big">0 → 1<small>une plateforme complète, construite seul</small></div>
+        <div class="case-vis">
+          <span class="case-tag">Réalisation</span>
+          <div class="brand"><div class="mark"><img src="./assets/logos/bk-immo.svg" alt="" onload="this.parentElement.classList.add('has-logo')" onerror="this.remove()"><span>B&amp;K</span></div><div><b>Immobilier</b><small>2020 — 2021</small></div></div>
+          <div class="case-big"><strong>0 → 1</strong><small>plateforme construite seul</small></div>
         </div>
         <div class="case-body">
           <h3>B&K Immo</h3>
