@@ -1,6 +1,6 @@
-# Portfolio — Jeremy MADAR
+# Portfolio — Jérémy MADAR
 
-Site portfolio personnel de Jeremy MADAR, développeur Full-Stack freelance à Paris.
+Site portfolio personnel de Jérémy MADAR, développeur Full-Stack à Paris.
 
 **Site en ligne :** [https://JeremyMadar-Dev.github.io](https://JeremyMadar-Dev.github.io)
 
@@ -74,7 +74,7 @@ Le repo doit s'appeler exactement `JeremyMadar-Dev.github.io` pour être servi �
 ```bash
 git init
 git add .
-git commit -m "Initial commit — Portfolio Jeremy MADAR"
+git commit -m "Initial commit — Portfolio Jérémy MADAR"
 git branch -M main
 git remote add origin https://github.com/JeremyMadar-Dev/JeremyMadar-Dev.github.io.git
 git push -u origin main

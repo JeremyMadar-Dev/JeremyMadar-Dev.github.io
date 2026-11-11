@@ -1,5 +1,5 @@
 /* ==============================================================
-   Portfolio Jeremy MADAR — main.js
+   Portfolio Jérémy MADAR — main.js
    --------------------------------------------------------------
    Responsabilités :
      1. Reveal au scroll via IntersectionObserver
